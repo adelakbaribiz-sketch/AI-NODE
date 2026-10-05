@@ -36,3 +36,8 @@ Decisions made while turning the original brainstorm dossier ([DOSSIER_SOURCE.md
 **Decision:** `ainode/web` is the only code package; `ainode/docs` holds documentation.
 **Why:** no backend exists yet, so there's nothing to separate into services/packages. A monorepo structure now would be speculative scaffolding for code that doesn't exist.
 **Trade-off:** revisit when/if a real backend is built (see [ARCHITECTURE.md](ARCHITECTURE.md) for suggested seams).
+
+## D8 — Semantic, restrained elevation/3D (not app-wide)
+**Decision:** added a 4-level elevation system (`--shadow-raised/elevated/floating` + `.elevated`/`.depth-btn` utility classes in `globals.css`) and applied it to exactly three places: KPI stat tiles, the Try & Pay panel, and primary buttons. Tables, forms, the feed list, and the marketplace grid stay flat on `--surface-1`.
+**Why:** the upgrade brief asked for a "premium spatial" feel used *semantically* (important surfaces only), not applied uniformly — uniform depth on every card is the generic "SaaS-card-kit" look the `frontend-design` skill explicitly flags as a templated tell. Dark-mode shadows use a soft ambient cast + faint top highlight rather than a literal drop shadow, which is invisible against a near-black page.
+**Trade-off:** less "wow" than decorating every surface, but keeps dense areas (tables, forms) fast and readable, per the brief's own instruction (§7/§16 of the upgrade prompt).
