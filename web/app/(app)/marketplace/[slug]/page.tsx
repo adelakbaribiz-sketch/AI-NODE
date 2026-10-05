@@ -45,7 +45,7 @@ export default async function ApiDetailPage({ params }: { params: Promise<{ slug
           </div>
         </div>
 
-        <Card className="w-full shrink-0 lg:w-80">
+        <Card className="elevated w-full shrink-0 border-border-strong lg:w-80">
           <CardHeader>
             <CardTitle>Try & Pay</CardTitle>
           </CardHeader>

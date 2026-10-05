@@ -40,6 +40,25 @@
   /* chart chrome */
   --grid-line: #242a33;
   --axis: #383835;
+
+  /*
+    Elevation — a 4-level spatial system (base -> raised -> elevated ->
+    floating), used sparingly and semantically (see docs/DECISIONS.md D8):
+    KPIs, the Try & Pay panel, and primary CTAs get lift; tables, forms and
+    lists stay flat on --surface-1 for speed and density. Dark-mode shadows
+    read as a soft ambient cast plus a faint top highlight, not a drop
+    shadow — a literal black shadow disappears against a near-black page.
+  */
+  --shadow-raised: 0 1px 2px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  --shadow-elevated: 0 6px 16px -4px rgba(0, 0, 0, 0.5), 0 1px 2px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  --shadow-floating: 0 16px 40px -8px rgba(0, 0, 0, 0.6), 0 2px 6px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  --shadow-brand-glow: 0 0 0 1px rgba(57, 135, 229, 0.15), 0 8px 24px -6px rgba(57, 135, 229, 0.25);
+
+  --ease-spatial: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --duration-fast: 120ms;
+  --duration-base: 180ms;
 }
 
 @theme inline {
@@ -108,4 +127,52 @@ textarea.input {
   height: auto;
   padding-top: 0.5rem;
   resize: vertical;
+}
+
+.elevated {
+  box-shadow: var(--shadow-elevated);
+  transition: transform var(--duration-base) var(--ease-spatial), box-shadow var(--duration-base) var(--ease-spatial);
+}
+.elevated:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-floating);
+}
+
+.depth-btn {
+  box-shadow: var(--shadow-raised), var(--shadow-brand-glow);
+  transition: transform var(--duration-fast) var(--ease-spatial), box-shadow var(--duration-fast) var(--ease-spatial),
+    background-color var(--duration-fast) var(--ease-spatial);
+}
+.depth-btn:hover {
+  transform: translateY(-1px);
+}
+.depth-btn:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-raised);
+}
+
+/* Mobile: lighter shadows, no hover-lift transform (touch has no hover; keep it cheap) */
+@media (max-width: 640px) {
+  .elevated,
+  .depth-btn {
+    box-shadow: var(--shadow-raised);
+  }
+  .elevated:hover {
+    transform: none;
+    box-shadow: var(--shadow-raised);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* Kill decorative lift/transition motion; functional motion (e.g. the
+     onboarding loading spinner, animate-spin) is left alone on purpose —
+     it conveys state, it isn't decorative. */
+  .elevated,
+  .depth-btn {
+    transition-duration: 0.01ms !important;
+  }
+  .elevated:hover,
+  .depth-btn:hover {
+    transform: none;
+  }
 }

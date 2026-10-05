@@ -18,7 +18,7 @@ export function StatTile({
     deltaTone === "good" ? "text-good" : deltaTone === "critical" ? "text-critical" : "text-ink-muted";
 
   return (
-    <div className="rounded-lg border border-border bg-surface-1 p-5">
+    <div className="elevated rounded-lg border border-border bg-surface-1 p-5">
       <div className="flex items-center justify-between">
         <span className="text-xs font-medium uppercase tracking-wide text-ink-muted">{label}</span>
         {demo && <DemoBadge />}

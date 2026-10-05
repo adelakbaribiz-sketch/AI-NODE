@@ -5,7 +5,8 @@ type Variant = "primary" | "secondary" | "ghost";
 type Size = "sm" | "md";
 
 const variantStyles: Record<Variant, string> = {
-  primary: "bg-brand text-[#061019] hover:bg-brand-strong",
+  // Depth is semantic: the primary action gets lift, secondary/ghost stay flat.
+  primary: "depth-btn bg-brand text-[#061019] hover:bg-brand-strong",
   secondary: "bg-surface-2 text-ink-primary border border-border-strong hover:bg-surface-3",
   ghost: "text-ink-secondary hover:text-ink-primary hover:bg-surface-2",
 };
