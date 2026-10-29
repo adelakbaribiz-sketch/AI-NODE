@@ -4,6 +4,8 @@
 
 > **Status: Demo / Prototype.** This is a portfolio-grade frontend demo, not a live product. There is no backend, no deployed smart contract, no real payment processor, and no real user data anywhere in this repository. Every number, transaction, and account shown in the UI is synthetic and clearly labeled. See [`docs/DEMO.md`](docs/DEMO.md) for the full real-vs-simulated inventory.
 
+![Developer dashboard — revenue, call volume and recent settlements (synthetic data)](docs/screenshots/developer-dashboard.png)
+
 ## Problem
 Traditional payment rails charge roughly $0.30 per transaction — uneconomical for AI-agent micropayments that average around $0.31. Existing infrastructure is either payments-only (x402, Nevermined) or reputation/content-only (Kaito, Cookie), with nothing unifying the two.
 
@@ -20,7 +22,19 @@ AINode combines x402-style micropayments (agents pay per API call, settled in on
 - **Fully responsive** — desktop sidebar, mobile slide-in drawer navigation.
 
 ## Screenshots
-_Run the app locally (below) to see it live — the UI is dark-mode only by design; see [`docs/DECISIONS.md`](docs/DECISIONS.md)._
+| Landing page | API marketplace |
+|---|---|
+| ![Landing page](docs/screenshots/landing.png) | ![API marketplace with category filters and reputation tiers](docs/screenshots/api-marketplace.png) |
+| **API detail with "Try & Pay"** | **Staking & governance** |
+| ![API detail page with pricing, uptime and the simulated Try & Pay flow](docs/screenshots/api-detail.png) | ![Staking tiers and governance proposals](docs/screenshots/staking-governance.png) |
+
+<p>
+  <img src="docs/screenshots/mobile.png" alt="Developer dashboard on a phone-sized screen" width="260">
+</p>
+
+*Phone-sized screen (390 px wide).*
+
+_Captured from the demo running locally. Every figure, account and transaction is synthetic — the persistent banner at the top of each screen says so. The UI is dark-mode only by design; see [`docs/DECISIONS.md`](docs/DECISIONS.md)._
 
 ## Architecture
 A single Next.js 16 (App Router, React 19, TypeScript, Tailwind v4) frontend rendering from in-repo mock data — no backend, no database, no blockchain node. Full target-state architecture (what a real backend would look like, and exactly where it would plug in) is documented in [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md).
