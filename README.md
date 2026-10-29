@@ -28,6 +28,10 @@ AINode combines x402-style micropayments (agents pay per API call, settled in on
 | **API detail with "Try & Pay"** | **Staking & governance** |
 | ![API detail page with pricing, uptime and the simulated Try & Pay flow](docs/screenshots/api-detail.png) | ![Staking tiers and governance proposals](docs/screenshots/staking-governance.png) |
 
+| Mobile | 
+|---|
+| <img src="docs/screenshots/mobile.png" alt="Developer dashboard on a phone-sized screen" width="260"> |
+
 _Captured from the demo running locally. Every figure, account and transaction is synthetic — the persistent banner at the top of each screen says so. The UI is dark-mode only by design; see [`docs/DECISIONS.md`](docs/DECISIONS.md)._
 
 ## Architecture
